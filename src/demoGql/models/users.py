@@ -15,3 +15,4 @@ class User(BaseUser):
 
     class Config:
         orm_mode = True
+

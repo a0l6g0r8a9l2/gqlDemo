@@ -4,13 +4,17 @@ from sqlalchemy import (
     Integer,
     String,
     DateTime,
-    func
+    func, Table
 )
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-
 Base = declarative_base()
+
+association_table = Table('users_followers', Base.metadata,
+                          Column('user_id', ForeignKey('users.id'), primary_key=True),
+                          Column('follower_id', ForeignKey('followers.id'), primary_key=True)
+                          )
 
 
 class User(Base):
@@ -20,6 +24,10 @@ class User(Base):
     email = Column(String, unique=True)
     username = Column(String, unique=True)
     password = Column(String)
+
+    follower = relationship("Follower",
+                            secondary=association_table,
+                            backref="parents")
 
 
 class Post(Base):
@@ -32,3 +40,10 @@ class Post(Base):
     content = Column(String)
 
     user = relationship('User', backref='posts')
+
+
+class Follower(Base):
+    __tablename__ = 'followers'
+
+    id = Column(Integer, primary_key=True)
+    follow_from_date = Column(DateTime(timezone=True), server_default=func.now())

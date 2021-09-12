@@ -1,22 +1,7 @@
 import logging
 from functools import wraps
 
-# from contextlib import ContextDecorator
-
 logging.basicConfig(level=logging.INFO)
-
-
-# class dev_logger(ContextDecorator):
-#     def __init__(self, name: str = 'default', **kwargs):
-#         self.name = name
-#         self.kwargs = kwargs
-#
-#     def __enter__(self):
-#         params = {{k: v} for k, v in self.kwargs.items()}
-#         logging.info(f'Entering: {self.name} with: params {params}')
-#
-#     def __exit__(self, exc_type, exc, exc_tb):
-#         logging.info(f'Exiting: {self.name}')
 
 
 def dev_log(function):

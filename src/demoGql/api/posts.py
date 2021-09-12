@@ -9,24 +9,6 @@ from demoGql.utils import dev_log
 
 class GetPost(ObjectType):
     post = Field(UserPostOutType, resolver=resolve_post, post_id=ID(required=True))
-    # posts_by_user = Field(List(BasePost), resolver=resolve_user_posts, user_id=ID(required=True))
-
-
-# class GetPosts(ObjectType):
-#     posts = List(Post)
-#
-#     @dev_log
-#     def resolve_posts(self, info, user_id: int):
-#         # user = resolve_user(self, info=info, id=post_id)
-#
-#         get_post = PostsService().get_posts_by_user_id(user_id=user_id)
-#         return Post(
-#             title=get_post.title,
-#             content=get_post.content,
-#             id=get_post.id,
-#             date=get_post.date,
-#             posted_by=user
-#         )
 
 
 class CreatePost(Mutation):

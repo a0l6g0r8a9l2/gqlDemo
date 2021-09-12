@@ -8,12 +8,14 @@ from . import (
 )
 from .users import CreateUser, UserType
 from .posts import CreatePost, GetPost
+from .followers import FollowUp
 from ..resolvers import resolve_user
 
 
 class Mutation(ObjectType):
     create_user = CreateUser.Field()
     create_post = CreatePost.Field()
+    follow_up = FollowUp.Field()
 
 
 class Query(ObjectType):

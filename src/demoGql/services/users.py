@@ -13,19 +13,6 @@ class UserService:
     def __init__(self, session: Session = Session()):
         self.session = session
 
-    def get_user_by_name(self, username: str) -> tables.User:
-        with self.session:
-            user = (
-                    self.session
-                    .query(tables.User)
-                    .filter(tables.User.username == username)
-                    .first()
-            )
-
-        if not user:
-            raise HTTPException(status.HTTP_404_NOT_FOUND)
-        return user
-
     def get_user_by_id(self, id: int) -> tables.User:
         with self.session:
             user = (

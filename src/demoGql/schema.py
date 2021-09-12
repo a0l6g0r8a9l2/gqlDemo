@@ -16,6 +16,7 @@ class UserOutType(ObjectType):
 
 class User(UserOutType):
     posts = List(UserPostOutType)
+    followers = List(UserOutType)
 
 
 class PostOutType(UserPostOutType):
