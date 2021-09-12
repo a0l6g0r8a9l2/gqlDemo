@@ -6,6 +6,7 @@ from fastapi import (
 
 from demoGql.database import Session
 from demoGql import tables
+from demoGql.utils import dev_log
 
 
 class FollowersService:
@@ -34,7 +35,8 @@ class FollowersService:
             self.session.refresh(user_to_follow)
         return user_to_follow
 
-    def get_user_followers(self, user_id: int) -> List[tables.User]:
+    @dev_log
+    def get_user_followers(self, user_id: int, last: int) -> List[tables.User]:
         with self.session:
             _followers = (
                 self.session
@@ -50,6 +52,6 @@ class FollowersService:
                 self.session
                     .query(tables.User)
                     .filter(tables.User.id.in_(followers_id))
-                    .all()
+                    .limit(last)
             )
         return followers

@@ -1,4 +1,4 @@
-from graphene import (String, ObjectType, Field, Mutation, List)
+from graphene import (String, ObjectType, Field, Mutation, List, Int)
 
 from demoGql.models import UserCreate
 from demoGql.resolvers import resolve_posts, resolve_followers
@@ -9,7 +9,7 @@ from demoGql.utils import dev_log
 
 class UserType(ObjectType):
     posts = Field(List(UserPostOutType), resolver=resolve_posts)
-    followers = Field(List(UserOutType), resolver=resolve_followers)
+    followers = Field(List(UserOutType), last=Int(), resolver=resolve_followers)
     user = Field(UserOutType)
 
     def resolve_user(self: UserOutType, info):

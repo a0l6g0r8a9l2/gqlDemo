@@ -12,8 +12,8 @@ def resolve_user(parent, info, id: int):
 
 
 @dev_log
-def resolve_followers(parent, info):
-    _user_followers = FollowersService().get_user_followers(parent.id)
+def resolve_followers(parent, info, last: int):
+    _user_followers = FollowersService().get_user_followers(parent.id, last=last)
     user_followers = [UserOutType(
             username=follower.username,
             email=follower.email,

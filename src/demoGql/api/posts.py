@@ -1,8 +1,8 @@
-from graphene import (String, ObjectType, Field, ID, Mutation, List)
+from graphene import (String, ObjectType, Field, ID, Mutation)
 
-from demoGql.resolvers import resolve_user, resolve_post
 from demoGql.models import PostCreate
-from demoGql.schema import UserPostOutType, UserPostOutType
+from demoGql.resolvers import resolve_user, resolve_post
+from demoGql.schema import UserPostOutType
 from demoGql.services.posts import PostsService
 from demoGql.utils import dev_log
 
