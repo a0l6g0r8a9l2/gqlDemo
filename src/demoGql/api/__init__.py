@@ -3,12 +3,9 @@ from fastapi import APIRouter
 from graphene import ObjectType, Field, ID
 from starlette.graphql import GraphQLApp
 
-from . import (
-    users,
-)
-from .users import CreateUser, UserType
-from .posts import CreatePost, GetPost
 from .followers import FollowUp
+from .posts import CreatePost, GetPost
+from .users import CreateUser, UserType
 from ..resolvers import resolve_user
 
 
