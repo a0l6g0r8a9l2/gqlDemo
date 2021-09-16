@@ -7,18 +7,27 @@ from demoGql.utils import dev_log
 
 
 class UserType(ObjectType):
-    id = ID()
-    username = String()
-    email = String()
-    posts = Field(List(UserPostOutType), resolver=resolve_posts)
-    followers = Field(List(UserOutType), last=Int(required=True), resolver=resolve_followers)
+    """
+    Автор/юзер. Его посты и подписчики
+    """
+    id = ID(description="Ид пользователя/автора")
+    username = String(description="Имя пользователя/автора")
+    email = String(description="email пользователя/автора")
+    posts = Field(List(UserPostOutType), resolver=resolve_posts, description="Посты пользователя/автора")
+    followers = Field(List(UserOutType),
+                      last=Int(required=True, description="Сколько подписчиков вернуть"),
+                      resolver=resolve_followers,
+                      description="Подписчики пользователя/автора")
 
 
 class CreateUser(Mutation):
+    """
+    Создать нового юзера
+    """
     class Arguments:
-        username = String(required=True)
-        email = String(required=True)
-        password = String(required=True)
+        username = String(required=True, description="Имя пользователя")
+        email = String(required=True, description="email пользователя")
+        password = String(required=True, description="Пароль пользователя")
 
     user = Field(UserOutType)
 

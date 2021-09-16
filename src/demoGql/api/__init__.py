@@ -16,7 +16,10 @@ class Mutation(ObjectType):
 
 
 class Query(ObjectType):
-    user = Field(UserType, id=ID(required=True), resolver=resolve_user)
+    """
+    Автор/юзер.
+    """
+    user = Field(UserType, id=ID(required=True, description="Ид пользователя"), resolver=resolve_user)
 
 
 router = APIRouter()

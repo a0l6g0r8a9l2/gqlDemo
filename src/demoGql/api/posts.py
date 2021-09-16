@@ -11,10 +11,13 @@ class GetPost(ObjectType):
 
 
 class CreatePost(Mutation):
+    """
+    Создать пост
+    """
     class Arguments:
-        title = String(required=True)
-        content = String(required=True)
-        posted_by = ID(required=True)
+        title = String(required=True, description="Заголовок поста")
+        content = String(required=True, description="Контент поста")
+        posted_by = ID(required=True, description="Ид автора")
 
     post = Field(PostOutType)
 

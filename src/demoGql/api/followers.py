@@ -5,9 +5,12 @@ from demoGql.utils import dev_log
 
 
 class FollowUp(Mutation):
+    """
+    Подписаться на другого автора/юзера
+    """
     class Arguments:
-        user_id = ID(required=True)
-        follow_up_id = ID(required=True)
+        user_id = ID(required=True, description="Ид того кем подписываемся")
+        follow_up_id = ID(required=True, description="Ид того на кого подписываемся")
 
     ok = Boolean()
 
