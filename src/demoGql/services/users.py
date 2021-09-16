@@ -4,7 +4,6 @@ from fastapi import (
 
 from demoGql.database import Session
 from .. import (
-    models,
     tables,
 )
 
@@ -16,7 +15,7 @@ class UserService:
     def get_user_by_id(self, id: int) -> tables.User:
         with self.session:
             user = (
-                    self.session
+                self.session
                     .query(tables.User)
                     .filter(tables.User.id == id)
                     .first()
@@ -26,11 +25,11 @@ class UserService:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         return user
 
-    def create_user(self, user_data: models.UserCreate) -> tables.User:
+    def create_user(self, username: str, email: str, password: str) -> tables.User:
         user = tables.User(
-            email=user_data.email,
-            username=user_data.username,
-            password=user_data.password
+            email=email,
+            username=username,
+            password=password
         )
 
         with self.session:

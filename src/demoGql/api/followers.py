@@ -6,8 +6,8 @@ from demoGql.utils import dev_log
 
 class FollowUp(Mutation):
     class Arguments:
-        user_id = ID()
-        follow_up_id = ID()
+        user_id = ID(required=True)
+        follow_up_id = ID(required=True)
 
     ok = Boolean()
 

@@ -1,8 +1,7 @@
 from graphene import (String, ObjectType, Field, ID, Mutation)
 
-from demoGql.models import PostCreate
 from demoGql.resolvers import resolve_user, resolve_post
-from demoGql.schema import UserPostOutType
+from demoGql.schema import UserPostOutType, PostOutType
 from demoGql.services.posts import PostsService
 from demoGql.utils import dev_log
 
@@ -17,19 +16,18 @@ class CreatePost(Mutation):
         content = String(required=True)
         posted_by = ID(required=True)
 
-    post = Field(UserPostOutType)
+    post = Field(PostOutType)
 
     @dev_log
-    def mutate(self, info, title, content, posted_by):
+    def mutate(self, info, title: str, content: str, posted_by: int):
         user = resolve_user(self, info=info, id=posted_by)
 
-        model = PostCreate(title=title, content=content, posted_by=user)
-        created_post = PostsService().create(model)
-        post = UserPostOutType(
+        created_post = PostsService().create(title=title, content=content, posted_by=user)
+        post = PostOutType(
             title=created_post.title,
             content=created_post.content,
-            id=created_post.id,
+            post_id=created_post.id,
             date=created_post.date,
-            posted_by=user
+            author=user
         )
         return CreatePost(post=post)

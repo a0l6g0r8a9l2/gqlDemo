@@ -1,4 +1,4 @@
-from graphene import (String, ObjectType, ID, DateTime, List)
+from graphene import (String, ObjectType, ID, DateTime, List, Field)
 
 
 class UserPostOutType(ObjectType):
@@ -20,4 +20,4 @@ class User(UserOutType):
 
 
 class PostOutType(UserPostOutType):
-    posted_by_user_id = ID()
+    author = Field(UserOutType)

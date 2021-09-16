@@ -7,9 +7,9 @@ from fastapi import (
 
 from demoGql.database import Session
 from .. import (
-    models,
     tables,
 )
+from ..schema import UserOutType
 from ..utils import dev_log
 
 logging.basicConfig(level=logging.INFO)
@@ -43,11 +43,11 @@ class PostsService:
             )
         return posts
 
-    def create(self, post_data: models.PostCreate) -> tables.Post:
+    def create(self, title: str, content: str, posted_by: UserOutType) -> tables.Post:
         post = tables.Post(
-            title=post_data.title,
-            content=post_data.content,
-            posted_by=post_data.posted_by.id
+            title=title,
+            content=content,
+            posted_by=posted_by.id
         )
 
         with self.session:

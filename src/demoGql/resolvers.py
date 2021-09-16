@@ -6,7 +6,7 @@ from demoGql.utils import dev_log
 
 
 @dev_log
-def resolve_user(parent, info, id: int):
+def resolve_user(parent, info, id: int) -> UserOutType:
     get_user = UserService().get_user_by_id(id=id)
     return UserOutType(username=get_user.username, email=get_user.email, id=get_user.id)
 
