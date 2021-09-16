@@ -8,14 +8,14 @@ from demoGql.utils import dev_log
 @dev_log
 def resolve_user(parent, info, id: int) -> UserOutType:
     get_user = UserService().get_user_by_id(id=id)
-    return UserOutType(username=get_user.username, email=get_user.email, id=get_user.id)
+    return UserOutType(name=get_user.name, email=get_user.email, id=get_user.id)
 
 
 @dev_log
 def resolve_followers(parent, info, last: int):
     _user_followers = FollowersService().get_user_followers(parent.id, last=last)
     user_followers = [UserOutType(
-            username=follower.username,
+            name=follower.name,
             email=follower.email,
             id=follower.id
     ) for follower in _user_followers]

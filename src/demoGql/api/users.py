@@ -11,7 +11,7 @@ class UserType(ObjectType):
     Автор/юзер. Его посты и подписчики
     """
     id = ID(description="Ид пользователя/автора")
-    username = String(description="Имя пользователя/автора")
+    name = String(description="Имя пользователя/автора")
     email = String(description="email пользователя/автора")
     posts = Field(List(UserPostOutType), resolver=resolve_posts, description="Посты пользователя/автора")
     followers = Field(List(UserOutType),
@@ -25,14 +25,14 @@ class CreateUser(Mutation):
     Создать нового юзера
     """
     class Arguments:
-        username = String(required=True, description="Имя пользователя")
+        name = String(required=True, description="Имя пользователя")
         email = String(required=True, description="email пользователя")
         password = String(required=True, description="Пароль пользователя")
 
     user = Field(UserOutType)
 
     @dev_log
-    def mutate(self, info, username: str, email: str, password: str):
-        created_user = UserService().create_user(username, email, password)
-        user = UserOutType(username=created_user.username, email=created_user.email, id=created_user.id)
+    def mutate(self, info, name: str, email: str, password: str):
+        created_user = UserService().create_user(name, email, password)
+        user = UserOutType(name=created_user.name, email=created_user.email, id=created_user.id)
         return CreateUser(user=user)

@@ -15,7 +15,7 @@ class UserOutType(ObjectType):
     """
     Юзер. Может быть автором постов или фоловером
     """
-    username = String(description="Имя пользователя")
+    name = String(description="Имя пользователя")
     email = String(description="email пользователя")
     id = ID(description="Ид пользователя")
 

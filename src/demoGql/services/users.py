@@ -25,10 +25,10 @@ class UserService:
             raise HTTPException(status.HTTP_404_NOT_FOUND)
         return user
 
-    def create_user(self, username: str, email: str, password: str) -> tables.User:
+    def create_user(self, name: str, email: str, password: str) -> tables.User:
         user = tables.User(
             email=email,
-            username=username,
+            name=name,
             password=password
         )
 
