@@ -24,7 +24,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="c56affeb-7c2a-4916-be98-126e22a68463">
+        <schema name="main" object-types="table, view, constraint, index, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c56affeb-7c2a-4916-be98-126e22a68463">
@@ -35,16 +39,10 @@ from
     users_followers uf;
 
 select
-    f.follow_from_date,
-    f.id
-from
-    followers f;
-
-select
     u.email,
     u.id,
-    u.password,
-    u.username
+    u.name,
+    u.password
 from
     users u;]]></console>
     </connection>
