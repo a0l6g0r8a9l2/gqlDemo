@@ -22,5 +22,6 @@ class Query(ObjectType):
     user = Field(UserType, id=ID(required=True, description="Ид пользователя"), resolver=resolve_user)
 
 
+schema = graphene.Schema(query=Query, mutation=Mutation)
 router = APIRouter()
-router.add_route("/", GraphQLApp(schema=graphene.Schema(query=Query, mutation=Mutation)))
+router.add_route("/", GraphQLApp(schema=schema))
