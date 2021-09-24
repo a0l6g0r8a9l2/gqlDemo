@@ -18,7 +18,3 @@ Session = sessionmaker(
 
 def recreate_db():
     Base.metadata.create_all(engine)
-
-
-if __name__ == '__main__':
-    recreate_db()

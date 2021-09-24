@@ -3,10 +3,10 @@ from fastapi import APIRouter
 from graphene import ObjectType, Field, ID
 from starlette.graphql import GraphQLApp
 
-from .followers import FollowUp
-from .posts import CreatePost, GetPost
-from .users import CreateUser, UserType
-from ..resolvers import resolve_user
+from demoGql.api.followers import FollowUp
+from demoGql.api.posts import CreatePost, GetPost
+from demoGql.api.users import CreateUser, UserType
+from demoGql.resolvers import resolve_user
 
 
 class Mutation(ObjectType):

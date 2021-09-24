@@ -6,11 +6,9 @@ from fastapi import (
     status, )
 
 from demoGql.database import Session
-from .. import (
-    tables,
-)
-from ..schema import UserOutType
-from ..utils import dev_log
+from demoGql import tables
+from demoGql.schema import UserOutType
+from demoGql.utils import dev_log
 
 logging.basicConfig(level=logging.INFO)
 

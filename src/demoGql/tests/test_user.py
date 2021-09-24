@@ -1,7 +1,7 @@
 from random import randint
 from graphene.test import Client
 
-from ..api import schema
+from demoGql.api import schema
 
 tests_users_names = [f'Daenerys Targaryen {randint(0, 100)}',
                      f'Jon Snow {randint(0, 100)}',

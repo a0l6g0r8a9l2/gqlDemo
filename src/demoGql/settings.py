@@ -2,9 +2,9 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    server_host: str = '127.0.0.1'
+    server_host: str = '127.0.0.1'  # ip addr show docker0  # 172.17.0.1
     server_port: int = 8000
-    database_url: str = 'sqlite:////home/algry/PycharmProjects/gqlDemo/database.sqlite3'
+    database_url: str = 'sqlite:////.../database.sqlite3'
 
     # jwt_secret: str
     # jwt_algorithm: str = 'HS256'
