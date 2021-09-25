@@ -16,5 +16,5 @@ Session = sessionmaker(
 )
 
 
-def recreate_db():
+def create_db():
     Base.metadata.create_all(engine)

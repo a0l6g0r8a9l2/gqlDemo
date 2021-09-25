@@ -9,3 +9,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 # docker run --name demo -d -p 8000:8000 demo-graphql-app
+# docker build -t demo-graphql-app .

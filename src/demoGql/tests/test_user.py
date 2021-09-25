@@ -36,7 +36,7 @@ class TestUser:
         """
         mutation {
           createUser(email: "JonSnow@mail.ru", password: "JonPass", name: "Jon Snow") {
-            default_user {
+            user {
               id
               name
               email
@@ -67,7 +67,7 @@ class TestUser:
     def test_query_user(self):
         """
         query {
-          default_user(id: 1) {
+          user(id: 1) {
             name
           }
         }
