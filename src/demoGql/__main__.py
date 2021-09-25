@@ -1,11 +1,11 @@
 import uvicorn
 
-from .settings import settings
+from demoGql.settings import settings
 
-
-uvicorn.run(
-    'demoGql.app:app',
-    host=settings.server_host,
-    port=settings.server_port,
-    reload=True,
-)
+if __name__ == '__main__':
+    uvicorn.run(
+        'demoGql.app:app',
+        host=settings.server_host,
+        port=settings.server_port,
+        reload=True,
+    )

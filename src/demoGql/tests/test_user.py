@@ -1,7 +1,7 @@
 from random import randint
 from graphene.test import Client
 
-from ..api import schema
+from demoGql.api import schema
 
 tests_users_names = [f'Daenerys Targaryen {randint(0, 100)}',
                      f'Jon Snow {randint(0, 100)}',
@@ -36,7 +36,7 @@ class TestUser:
         """
         mutation {
           createUser(email: "JonSnow@mail.ru", password: "JonPass", name: "Jon Snow") {
-            default_user {
+            user {
               id
               name
               email
@@ -67,7 +67,7 @@ class TestUser:
     def test_query_user(self):
         """
         query {
-          default_user(id: 1) {
+          user(id: 1) {
             name
           }
         }

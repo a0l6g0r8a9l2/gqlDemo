@@ -3,9 +3,7 @@ from fastapi import (
     status, )
 
 from demoGql.database import Session
-from .. import (
-    tables,
-)
+from demoGql import tables
 
 
 class UserService:

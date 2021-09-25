@@ -1,14 +1,14 @@
+import logging
+
 from pydantic import BaseSettings
+
+logging.basicConfig(level=logging.INFO)
 
 
 class Settings(BaseSettings):
     server_host: str = '127.0.0.1'
     server_port: int = 8000
-    database_url: str = 'sqlite:////home/algry/PycharmProjects/gqlDemo/database.sqlite3'
-
-    # jwt_secret: str
-    # jwt_algorithm: str = 'HS256'
-    # jwt_expires_s: int = 3600
+    database_url: str = 'sqlite:///../database.sqlite3'
 
 
 settings = Settings(

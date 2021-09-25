@@ -1,0 +1,4 @@
+.env
+venv
+database.sqlite3
+.pytest_cache
