@@ -28,6 +28,19 @@
   }
 }
 
+### Query user
+> {
+  user(id: 1) {
+    name
+    posts{
+      title,
+      date
+    }
+    followers(last: 3){
+      name
+    }
+  }
+}
 ### Create post
 > mutation {
   createPost(content: "content from Jon Snow", title: "Jon Snow 1st post", postedBy: 1) {
