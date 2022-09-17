@@ -1,7 +1,7 @@
 # gqlDemo
 Демонстрационное приложение о технологии GraphQL
 ## Overview
-[Презентация о GraphQL](https://docs.google.com/presentation/d/1tU2jzV5u2vdLhKcWYWG-EJOjNSYN1DPb8MFXrX7YWmM/edit?usp=sharing)
+[Презентация о GraphQL](https://docs.google.com/presentation/d/1Pdro66g_0i9-LgfHY2e0WPejnC-3KEmm/edit?usp=sharing&ouid=110648758678996195335&rtpof=true&sd=true)
 ## Buid image 
 > docker run --name demo -d -p 8000:8000 demo-graphql-app
 ## Run container 
